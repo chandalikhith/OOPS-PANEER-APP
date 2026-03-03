@@ -1,7 +1,7 @@
 /**
  * OOPSBannerApp
  *
- * UC5: Banner using combined array declaration and initialization
+ * UC5: Combined Array Declaration and Initialization
  *
  * @author Likhith
  * @version 5.0
