@@ -1,62 +1,66 @@
 /**
  * OOPSBannerApp
  *
- * UC5: Combined Array Declaration and Initialization
+ * UC6: Modular Banner using Static Helper Methods
  *
  * @author Likhith
- * @version 5.0
+ * @version 6.0
  */
 public class OOPSBannerApp {
 
     public static void main(String[] args) {
 
-        String[] banner = {
+        String[] o = getO();
+        String[] p = getP();
+        String[] s = getS();
 
-                String.join("  ",
-                        " ***** ",
-                        " ***** ",
-                        " ***** ",
-                        " ***** "),
-
-                String.join("  ",
-                        "*     *",
-                        "*     *",
-                        "*     *",
-                        "*     *"),
-
-                String.join("  ",
-                        "*     *",
-                        "*     *",
-                        "*     *",
-                        "*     *"),
-
-                String.join("  ",
-                        "*     *",
-                        "*     *",
-                        "*     *",
-                        "*     *"),
-
-                String.join("  ",
-                        "*     *",
-                        "*     *",
-                        "*     *",
-                        "*     *"),
-
-                String.join("  ",
-                        "*     *",
-                        "*     *",
-                        "*     *",
-                        "*     *"),
-
-                String.join("  ",
-                        " ***** ",
-                        " ***** ",
-                        " ***** ",
-                        " ***** ")
-        };
-
-        for (String line : banner) {
-            System.out.println(line);
+        // Combine letters row by row
+        for (int i = 0; i < 7; i++) {
+            System.out.println(
+                    o[i] + "  " +
+                    o[i] + "  " +
+                    p[i] + "  " +
+                    s[i]
+            );
         }
+    }
+
+    // Static method for Letter O
+    public static String[] getO() {
+        return new String[]{
+                " ***** ",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                " ***** "
+        };
+    }
+
+    // Static method for Letter P
+    public static String[] getP() {
+        return new String[]{
+                "****** ",
+                "*     *",
+                "*     *",
+                "****** ",
+                "*      ",
+                "*      ",
+                "*      "
+        };
+    }
+
+    // Static method for Letter S
+    public static String[] getS() {
+        return new String[]{
+                " ***** ",
+                "*     *",
+                "*      ",
+                " ***** ",
+                "      *",
+                "*     *",
+                " ***** "
+        };
     }
 }
