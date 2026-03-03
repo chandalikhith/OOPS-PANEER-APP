@@ -1,17 +1,30 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * OOPSBannerApp
  *
- * UC7: Store Character Pattern in a Class
+ * UC8: Use HashMap for Character Patterns and Render via Function
  *
  * @author Likhith
- * @version 7.0
+ * @version 8.0
  */
 public class OOPSBannerApp {
 
+    // Centralized Pattern Storage
+    private static final Map<Character, String[]> patternMap = new HashMap<>();
+
     public static void main(String[] args) {
 
-        // Create character pattern objects
-        CharacterPattern oPattern = new CharacterPattern('O', new String[]{
+        initializePatterns();
+
+        renderBanner("OOPS");
+    }
+
+    // Initialize all character patterns
+    private static void initializePatterns() {
+
+        patternMap.put('O', new String[]{
                 " ***** ",
                 "*     *",
                 "*     *",
@@ -21,7 +34,7 @@ public class OOPSBannerApp {
                 " ***** "
         });
 
-        CharacterPattern pPattern = new CharacterPattern('P', new String[]{
+        patternMap.put('P', new String[]{
                 "****** ",
                 "*     *",
                 "*     *",
@@ -31,7 +44,7 @@ public class OOPSBannerApp {
                 "*      "
         });
 
-        CharacterPattern sPattern = new CharacterPattern('S', new String[]{
+        patternMap.put('S', new String[]{
                 " ***** ",
                 "*     *",
                 "*      ",
@@ -40,41 +53,25 @@ public class OOPSBannerApp {
                 "*     *",
                 " ***** "
         });
-
-        // Word to display
-        CharacterPattern[] word = { oPattern, oPattern, pPattern, sPattern };
-
-        // Print banner row by row
-        for (int i = 0; i < 7; i++) {
-            StringBuilder row = new StringBuilder();
-
-            for (CharacterPattern cp : word) {
-                row.append(cp.getPattern()[i]).append("  ");
-            }
-
-            System.out.println(row);
-        }
     }
 
-    // Static Inner Class
-    static class CharacterPattern {
+    // Render banner using nested loops
+    private static void renderBanner(String word) {
 
-        private char character;
-        private String[] pattern;
+        for (int row = 0; row < 7; row++) {
 
-        // Constructor
-        public CharacterPattern(char character, String[] pattern) {
-            this.character = character;
-            this.pattern = pattern;
-        }
+            StringBuilder line = new StringBuilder();
 
-        // Getter
-        public String[] getPattern() {
-            return pattern;
-        }
+            for (char ch : word.toCharArray()) {
 
-        public char getCharacter() {
-            return character;
+                String[] pattern = patternMap.get(ch);
+
+                if (pattern != null) {
+                    line.append(pattern[row]).append("  ");
+                }
+            }
+
+            System.out.println(line);
         }
     }
 }
